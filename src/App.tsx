@@ -11,6 +11,8 @@ import FacultyDetailPage from "./pages/FacultyDetail";
 import AboutPage from "./pages/About";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const AppContent = () => {
           <Route path="/faculty/:id" element={<FacultyDetailPage lang={lang} />} />
           <Route path="/about" element={<AboutPage lang={lang} />} />
           <Route path="/contact" element={<ContactPage lang={lang} />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
