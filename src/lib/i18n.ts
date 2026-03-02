@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 export type Lang = 'vi' | 'en';
 
@@ -37,7 +37,7 @@ export const translations = {
     contact: { vi: 'Liên hệ', en: 'Contact' },
   },
   hero: {
-    badge: { vi: 'Đại học FPT — Bộ môn Trí tuệ Nhân tạo', en: 'FPT University — Artificial Intelligence Department' },
+    badge: { vi: 'Đại học FPT TP.HCM — Bộ môn Trí tuệ Nhân tạo', en: 'FPT University HCMC — Department of Artificial Intelligence' },
     title1: { vi: 'Kiến tạo Tương lai', en: 'Shaping the Future' },
     title2: { vi: 'với Trí tuệ Nhân tạo', en: 'with Artificial Intelligence' },
     subtitle: { vi: 'Chương trình đào tạo AI tiên phong, kết hợp nghiên cứu chuyên sâu và thực hành dự án thực tế, chuẩn bị cho sinh viên trở thành lãnh đạo công nghệ tương lai.', en: 'A pioneering AI training program combining in-depth research with real-world project experience, preparing students to become future technology leaders.' },
@@ -56,9 +56,9 @@ export const translations = {
     h4Desc: { vi: '95% sinh viên có việc làm trong vòng 3 tháng sau tốt nghiệp với mức lương cạnh tranh.', en: '95% of graduates employed within 3 months of graduation with competitive salaries.' },
   },
   about: {
-    pageTitle: { vi: 'Về Bộ môn Trí tuệ Nhân tạo', en: 'About the AI Department' },
+    pageTitle: { vi: 'Về Bộ môn Trí tuệ Nhân tạo', en: 'About the Department of Artificial Intelligence' },
     historyTitle: { vi: 'Lịch sử hình thành', en: 'Our History' },
-    historyText: { vi: 'Bộ môn Trí tuệ Nhân tạo được thành lập năm 2019, là một trong những bộ môn tiên phong trong đào tạo AI tại Việt Nam. Với sứ mệnh đào tạo nguồn nhân lực chất lượng cao cho ngành AI, bộ môn đã phát triển mạnh mẽ với đội ngũ giảng viên có trình độ tiến sĩ từ các trường đại học hàng đầu thế giới.', en: 'The Artificial Intelligence Department was established in 2019, pioneering AI education in Vietnam. With a mission to train high-quality human resources for the AI industry, the department has grown strongly with faculty members holding doctoral degrees from world-leading universities.' },
+    historyText: { vi: 'Bộ môn Trí tuệ Nhân tạo được thành lập năm 2019 tại Đại học FPT TP.HCM, là một trong những bộ môn tiên phong trong đào tạo AI tại Việt Nam. Với sứ mệnh đào tạo nguồn nhân lực chất lượng cao cho ngành AI, bộ môn đã phát triển mạnh mẽ với đội ngũ giảng viên có trình độ tiến sĩ từ các trường đại học hàng đầu thế giới.', en: 'The Department of Artificial Intelligence was established in 2019 at FPT University Ho Chi Minh City, pioneering AI education in Vietnam. With a mission to train high-quality human resources for the AI industry, the department has grown strongly with faculty members holding doctoral degrees from world-leading universities.' },
     visionTitle: { vi: 'Tầm nhìn', en: 'Vision' },
     visionText: { vi: 'Trở thành trung tâm đào tạo và nghiên cứu AI hàng đầu Đông Nam Á, nơi kiến tạo những giải pháp công nghệ đột phá và đào tạo thế hệ lãnh đạo AI tương lai.', en: 'Become a leading AI training and research center in Southeast Asia, creating breakthrough technology solutions and training future AI leaders.' },
     missionTitle: { vi: 'Sứ mệnh', en: 'Mission' },
@@ -78,7 +78,7 @@ export const translations = {
     formMessage: { vi: 'Nội dung tin nhắn', en: 'Message' },
     formSend: { vi: 'Gửi tin nhắn', en: 'Send Message' },
     addressTitle: { vi: 'Địa chỉ', en: 'Address' },
-    addressText: { vi: 'Khu Giáo dục và Đào tạo – Khu Công nghệ cao Hòa Lạc – Km29 Đại lộ Thăng Long, Thạch Thất, Hà Nội', en: 'Education & Training Zone – Hoa Lac High-Tech Park – Km29 Thang Long Boulevard, Thach That, Hanoi' },
+    addressText: { vi: 'Lô E2a-7, Đường D1, Khu Công nghệ cao, P. Long Thạnh Mỹ, TP. Thủ Đức, TP. Hồ Chí Minh', en: 'Lot E2a-7, D1 Street, High-Tech Park, Long Thanh My Ward, Thu Duc City, Ho Chi Minh City' },
     emailTitle: { vi: 'Email', en: 'Email' },
     phoneTitle: { vi: 'Điện thoại', en: 'Phone' },
   },
@@ -88,15 +88,20 @@ export const translations = {
     viewDetail: { vi: 'Xem chi tiết', en: 'View Details' },
     research: { vi: 'Hướng nghiên cứu', en: 'Research Areas' },
     courses: { vi: 'Môn giảng dạy', en: 'Courses' },
-    projects: { vi: 'Dự án nghiên cứu', en: 'Research Projects' },
+    projects: { vi: 'Dự án đang nghiên cứu', en: 'Current Research Projects' },
+    completedResearch: { vi: 'Những nghiên cứu đã thực hiện', en: 'Completed Research' },
     students: { vi: 'Sinh viên đang hướng dẫn', en: 'Current Students' },
+    studentName: { vi: 'Tên sinh viên / Nhóm', en: 'Student / Group Name' },
+    studentTopic: { vi: 'Đề tài nghiên cứu', en: 'Research Topic' },
     announcement: { vi: 'Thông báo tuyển sinh nghiên cứu', en: 'Research Recruitment' },
     backToList: { vi: '← Quay lại danh sách', en: '← Back to list' },
+    showMore: { vi: 'Xem thêm', en: 'Show more' },
+    showLess: { vi: 'Thu gọn', en: 'Show less' },
   },
   footer: {
-    desc: { vi: 'Bộ môn Trí tuệ Nhân tạo - Đại học FPT. Đào tạo thế hệ lãnh đạo AI tiên phong.', en: 'Artificial Intelligence Department - FPT University. Training the next generation of AI leaders.' },
+    desc: { vi: 'Bộ môn Trí tuệ Nhân tạo - Đại học FPT TP.HCM. Đào tạo thế hệ lãnh đạo AI tiên phong.', en: 'Department of Artificial Intelligence - FPT University HCMC. Training the next generation of AI leaders.' },
     quickLinks: { vi: 'Liên kết nhanh', en: 'Quick Links' },
     contactInfo: { vi: 'Thông tin liên hệ', en: 'Contact Info' },
-    copyright: { vi: '© 2026 Bộ môn Trí tuệ Nhân tạo - Đại học FPT. Mọi quyền được bảo lưu.', en: '© 2026 Artificial Intelligence Department - FPT University. All rights reserved.' },
+    copyright: { vi: '© 2026 Bộ môn Trí tuệ Nhân tạo - Đại học FPT TP.HCM. Mọi quyền được bảo lưu.', en: '© 2026 Department of Artificial Intelligence - FPT University HCMC. All rights reserved.' },
   },
 } as const;

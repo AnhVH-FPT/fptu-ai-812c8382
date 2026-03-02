@@ -23,7 +23,7 @@ const Footer = ({ lang }: FooterProps) => {
                 className="h-8"
               />
               <span className="font-bold text-section-dark-foreground">
-                <span className="text-primary">AI</span> Department
+                <span className="text-primary">Dept. of</span> Artificial Intelligence
               </span>
             </div>
             <p className="text-sm leading-relaxed text-text-dim">{t(f.desc, lang)}</p>
@@ -51,7 +51,7 @@ const Footer = ({ lang }: FooterProps) => {
             <h4 className="mb-4 font-semibold text-section-dark-foreground">{t(f.contactInfo, lang)}</h4>
             <div className="flex flex-col gap-2 text-sm text-text-dim">
               <p>📧 ai.department@fpt.edu.vn</p>
-              <p>📞 (024) 7300 1866</p>
+              <p>📞 (028) 7300 5588</p>
               <p>📍 {t(translations.contact.addressText, lang)}</p>
             </div>
           </div>

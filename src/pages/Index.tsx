@@ -116,8 +116,8 @@ const IndexPage = ({ lang }: IndexPageProps) => {
           </h2>
           <p className="mb-8 text-text-dim">
             {lang === 'vi'
-              ? 'Liên hệ ngay với chúng tôi để được tư vấn chi tiết về chương trình đào tạo.'
-              : 'Contact us today for detailed program consultation.'}
+              ? 'Liên hệ ngay với Bộ môn Trí tuệ Nhân tạo - Đại học FPT TP.HCM để được tư vấn chi tiết.'
+              : 'Contact the Department of Artificial Intelligence at FPT University HCMC for details.'}
           </p>
           <Link
             to="/contact"
