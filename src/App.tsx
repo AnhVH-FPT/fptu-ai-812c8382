@@ -3,23 +3,42 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { useLang } from "@/lib/i18n";
+import Layout from "@/components/Layout";
+import IndexPage from "./pages/Index";
+import FacultyPage from "./pages/Faculty";
+import FacultyDetailPage from "./pages/FacultyDetail";
+import AboutPage from "./pages/About";
+import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const { lang, setLang } = useLang();
+
+  return (
+    <BrowserRouter>
+      <Layout lang={lang} setLang={setLang}>
+        <Routes>
+          <Route path="/" element={<IndexPage lang={lang} />} />
+          <Route path="/faculty" element={<FacultyPage lang={lang} />} />
+          <Route path="/faculty/:id" element={<FacultyDetailPage lang={lang} />} />
+          <Route path="/about" element={<AboutPage lang={lang} />} />
+          <Route path="/contact" element={<ContactPage lang={lang} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AppContent />
     </TooltipProvider>
   </QueryClientProvider>
 );
