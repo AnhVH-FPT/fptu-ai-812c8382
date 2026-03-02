@@ -60,7 +60,7 @@ const ContactPage = ({ lang }: ContactPageProps) => {
               {[
                 { icon: '📍', title: t(c.addressTitle, lang), text: t(c.addressText, lang) },
                 { icon: '📧', title: t(c.emailTitle, lang), text: 'ai.department@fpt.edu.vn' },
-                { icon: '📞', title: t(c.phoneTitle, lang), text: '(024) 7300 1866' },
+                { icon: '📞', title: t(c.phoneTitle, lang), text: '(028) 7300 5588' },
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 rounded-xl border border-border bg-card p-4">
                   <span className="text-2xl">{item.icon}</span>
@@ -73,15 +73,17 @@ const ContactPage = ({ lang }: ContactPageProps) => {
             </div>
 
             {/* Map placeholder */}
-            <div className="flex aspect-video items-center justify-center rounded-2xl border border-border bg-muted">
-              <div className="text-center text-muted-foreground">
-                <svg className="mx-auto mb-2 h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-                <p className="text-sm font-medium">FPT University - Hoa Lac Campus</p>
-                <p className="text-xs">Km29 Thang Long Boulevard</p>
-              </div>
+            <div className="overflow-hidden rounded-2xl border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4854676590956!2d106.80903007480602!3d10.841127589311586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752731176b07b1%3A0xb752b24b379bae5e!2sFPT%20University%20HCMC!5e0!3m2!1svi!2s!4v1709000000000!5m2!1svi!2s"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="FPT University HCMC Map"
+              />
             </div>
           </div>
         </div>

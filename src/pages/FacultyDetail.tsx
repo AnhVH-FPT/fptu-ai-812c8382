@@ -39,7 +39,8 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
           <div>
             <h1 className="mb-1 text-3xl font-bold">{member.name}</h1>
             <p className="mb-2 text-lg font-medium text-primary">{t(member.title, lang)}</p>
-            <p className="mb-3 text-sm text-muted-foreground">📧 {member.email}</p>
+            <p className="mb-1 text-sm text-muted-foreground">📧 {member.email}</p>
+            <p className="mb-3 text-sm text-muted-foreground">📞 {member.phone}</p>
             <div className="flex flex-wrap gap-1.5">
               {member.researchAreas[lang].map((area, i) => (
                 <span key={i} className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -77,16 +78,32 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
             <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
               🎓 {t(f.students, lang)}
             </h2>
-            <div className="flex items-center gap-4">
-              <span className="text-5xl font-black text-primary">{member.studentsCount}</span>
-              <span className="text-sm text-muted-foreground">
-                {lang === 'vi' ? 'sinh viên nghiên cứu' : 'research students'}
-              </span>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="pb-2 pr-3 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {t(f.studentName, lang)}
+                    </th>
+                    <th className="pb-2 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {t(f.studentTopic, lang)}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {member.students.map((student, i) => (
+                    <tr key={i} className="border-b border-border/50 last:border-0">
+                      <td className="py-2.5 pr-3 font-medium">{t(student.name, lang)}</td>
+                      <td className="py-2.5 text-muted-foreground">{t(student.topic, lang)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
-        {/* Projects */}
+        {/* Current Projects */}
         <div className="mt-6 rounded-2xl border border-border bg-card p-6">
           <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
             🔬 {t(f.projects, lang)}
@@ -96,6 +113,21 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
               <div key={i} className="rounded-xl bg-muted p-4">
                 <h3 className="mb-1 font-semibold text-primary">{project.name}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{project.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Completed Research */}
+        <div className="mt-6 rounded-2xl border border-border bg-card p-6">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
+            📄 {t(f.completedResearch, lang)}
+          </h2>
+          <div className="space-y-4">
+            {member.completedResearch[lang].map((research, i) => (
+              <div key={i} className="rounded-xl bg-muted p-4">
+                <h3 className="mb-1 font-semibold text-primary">{research.name}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{research.desc}</p>
               </div>
             ))}
           </div>

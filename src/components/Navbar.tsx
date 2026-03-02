@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useLang, t, translations } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
+import { t, translations } from '@/lib/i18n';
 import { useState } from 'react';
 
 interface NavbarProps {
@@ -31,7 +31,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
             className="h-8"
           />
           <span className="hidden text-sm font-bold sm:block">
-            <span className="text-primary">AI</span> Department
+            <span className="text-primary">Dept. of</span> Artificial Intelligence
           </span>
         </Link>
 
