@@ -181,13 +181,15 @@ export const facultyData: Faculty[] = [
     ],
     completedResearches: [
       {
-        name: { vi: 'PhoBERT: Mô hình ngôn ngữ tiền huấn luyện cho tiếng Việt', en: 'PhoBERT: Pre-trained Language Model for Vietnamese' },
+        name: 'PhoBERT: Pre-trained Language Model for Vietnamese',
+        authors: 'Tran Thi Binh, Dat Quoc Nguyen, Anh Tuan Nguyen',
         abstract: { vi: 'Đóng góp vào việc fine-tune mô hình PhoBERT cho các tác vụ NLP tiếng Việt, đạt SOTA trên 4 benchmark tiếng Việt.', en: 'Contributed to fine-tuning PhoBERT model for Vietnamese NLP tasks, achieving SOTA on 4 Vietnamese benchmarks.' },
         venue: { vi: 'ACL 2020', en: 'ACL 2020' },
         doi: 'https://doi.org/10.18653/v1/2020.findings-emnlp.92',
       },
       {
-        name: { vi: 'Phân tích cảm xúc mạng xã hội Việt Nam', en: 'Vietnamese Social Media Sentiment Analysis' },
+        name: 'Vietnamese Social Media Sentiment Analysis',
+        authors: 'Tran Thi Binh, Le Thi Mai, Hoang Van Nam',
         abstract: { vi: 'Xây dựng bộ dữ liệu 50,000 bình luận và mô hình phân tích cảm xúc đa lớp, đạt F1-score 87.3%.', en: 'Built a 50,000-comment dataset and multi-class sentiment analysis model, achieving F1-score of 87.3%.' },
         venue: { vi: 'EMNLP 2021', en: 'EMNLP 2021' },
         doi: 'https://doi.org/10.18653/v1/2021.emnlp-main.456',
