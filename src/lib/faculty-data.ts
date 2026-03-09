@@ -11,7 +11,8 @@ export interface CurrentResearch {
 }
 
 export interface CompletedResearch {
-  name: Record<Lang, string>;
+  name: string;
+  authors: string;
   abstract: Record<Lang, string>;
   venue: Record<Lang, string>;
   doi: string;
@@ -103,13 +104,15 @@ export const facultyData: Faculty[] = [
     ],
     completedResearches: [
       {
-        name: { vi: 'Phát hiện ung thư phổi bằng Deep Learning', en: 'Lung Cancer Detection with Deep Learning' },
+        name: 'Lung Cancer Detection with Deep Learning',
+        authors: 'Nguyen Van An, Tran Quoc Huy, Le Thi Minh Anh',
         abstract: { vi: 'Nghiên cứu ứng dụng mạng CNN trong phát hiện sớm ung thư phổi từ ảnh CT scan, đạt độ chính xác 94.2% trên bộ dữ liệu LIDC-IDRI.', en: 'Research on CNN application for early lung cancer detection from CT images, achieving 94.2% accuracy on the LIDC-IDRI dataset.' },
         venue: { vi: 'MICCAI 2022', en: 'MICCAI 2022' },
         doi: 'https://doi.org/10.1007/978-3-031-16431-6_01',
       },
       {
-        name: { vi: 'Tối ưu mô hình nhẹ cho thiết bị edge', en: 'Lightweight Model Optimization for Edge Devices' },
+        name: 'Lightweight Model Optimization for Edge Devices',
+        authors: 'Nguyen Van An, Pham Minh Duc, Hoang Thi Nga',
         abstract: { vi: 'Nghiên cứu kỹ thuật pruning và quantization để triển khai mô hình CV trên thiết bị IoT, giảm 60% kích thước mô hình mà chỉ giảm 1.5% accuracy.', en: 'Research on pruning and quantization techniques for deploying CV models on IoT devices, reducing model size by 60% with only 1.5% accuracy drop.' },
         venue: { vi: 'CVPR Workshop 2021', en: 'CVPR Workshop 2021' },
         doi: 'https://doi.org/10.1109/CVPRW53098.2021.00123',
@@ -178,13 +181,15 @@ export const facultyData: Faculty[] = [
     ],
     completedResearches: [
       {
-        name: { vi: 'PhoBERT: Mô hình ngôn ngữ tiền huấn luyện cho tiếng Việt', en: 'PhoBERT: Pre-trained Language Model for Vietnamese' },
+        name: 'PhoBERT: Pre-trained Language Model for Vietnamese',
+        authors: 'Tran Thi Binh, Dat Quoc Nguyen, Anh Tuan Nguyen',
         abstract: { vi: 'Đóng góp vào việc fine-tune mô hình PhoBERT cho các tác vụ NLP tiếng Việt, đạt SOTA trên 4 benchmark tiếng Việt.', en: 'Contributed to fine-tuning PhoBERT model for Vietnamese NLP tasks, achieving SOTA on 4 Vietnamese benchmarks.' },
         venue: { vi: 'ACL 2020', en: 'ACL 2020' },
         doi: 'https://doi.org/10.18653/v1/2020.findings-emnlp.92',
       },
       {
-        name: { vi: 'Phân tích cảm xúc mạng xã hội Việt Nam', en: 'Vietnamese Social Media Sentiment Analysis' },
+        name: 'Vietnamese Social Media Sentiment Analysis',
+        authors: 'Tran Thi Binh, Le Thi Mai, Hoang Van Nam',
         abstract: { vi: 'Xây dựng bộ dữ liệu 50,000 bình luận và mô hình phân tích cảm xúc đa lớp, đạt F1-score 87.3%.', en: 'Built a 50,000-comment dataset and multi-class sentiment analysis model, achieving F1-score of 87.3%.' },
         venue: { vi: 'EMNLP 2021', en: 'EMNLP 2021' },
         doi: 'https://doi.org/10.18653/v1/2021.emnlp-main.456',
@@ -260,19 +265,22 @@ export const facultyData: Faculty[] = [
     ],
     completedResearches: [
       {
-        name: { vi: 'Điều hướng robot trong môi trường động', en: 'Robot Navigation in Dynamic Environments' },
+        name: 'Robot Navigation in Dynamic Environments',
+        authors: 'Le Van Cuong, Vo Thanh Dat, Nguyen Thi Yen',
         abstract: { vi: 'Nghiên cứu thuật toán RL cho robot di chuyển trong môi trường có chướng ngại vật động, đạt tỉ lệ thành công 96.8%.', en: 'Research on RL algorithms for robot navigation with dynamic obstacles, achieving 96.8% success rate.' },
         venue: { vi: 'ICRA 2020', en: 'ICRA 2020' },
         doi: 'https://doi.org/10.1109/ICRA40945.2020.9196789',
       },
       {
-        name: { vi: 'Tối ưu năng lượng UAV bằng Deep RL', en: 'Energy-Efficient UAV Control with Deep RL' },
+        name: 'Energy-Efficient UAV Control with Deep RL',
+        authors: 'Le Van Cuong, Bui Minh Khoa, Phan Thi Ngoc Anh',
         abstract: { vi: 'Phát triển phương pháp điều khiển bay tiết kiệm năng lượng cho drone sử dụng PPO, giảm 35% tiêu thụ pin. Best Paper Award.', en: 'Developed energy-saving flight control method for drones using PPO, reducing battery consumption by 35%. Best Paper Award.' },
         venue: { vi: 'IROS 2019', en: 'IROS 2019' },
         doi: 'https://doi.org/10.1109/IROS40897.2019.8967654',
       },
       {
-        name: { vi: 'Cooperative Multi-Agent RL cho logistics', en: 'Cooperative Multi-Agent RL for Logistics' },
+        name: 'Cooperative Multi-Agent RL for Logistics',
+        authors: 'Le Van Cuong, Le Dinh Phuc, Hoang Gia Bao, Do Van Kien',
         abstract: { vi: 'Hệ thống phân phối hàng hóa đa robot trong kho, tăng 40% hiệu suất so với phương pháp truyền thống.', en: 'Multi-robot goods distribution system in warehouses, 40% efficiency improvement over traditional methods.' },
         venue: { vi: 'NeurIPS 2021', en: 'NeurIPS 2021' },
         doi: 'https://doi.org/10.48550/arXiv.2110.12345',
