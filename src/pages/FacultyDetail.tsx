@@ -103,11 +103,11 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
             {member.currentResearches.map((r, i) => (
               <div key={i} className="rounded-xl bg-muted p-4">
                 <h3 className="mb-1 font-semibold text-primary">{t(r.name, lang)}</h3>
-                <p className="mb-2 text-sm leading-relaxed text-muted-foreground">{t(r.summary, lang)}</p>
+                <p className="mb-2 text-sm leading-relaxed text-foreground">{t(r.summary, lang)}</p>
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="text-xs font-semibold text-muted-foreground">{t(f.researchMembers, lang)}:</span>
+                  <span className="text-sm font-semibold text-muted-foreground">{t(f.researchMembers, lang)}:</span>
                   {r.members.map((m, j) => (
-                    <span key={j} className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                    <span key={j} className="rounded-full bg-primary/10 px-2.5 py-1 text-sm font-medium text-primary">
                       {t(m.name, lang)}
                     </span>
                   ))}
