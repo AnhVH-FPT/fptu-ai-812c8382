@@ -265,19 +265,22 @@ export const facultyData: Faculty[] = [
     ],
     completedResearches: [
       {
-        name: { vi: 'Điều hướng robot trong môi trường động', en: 'Robot Navigation in Dynamic Environments' },
+        name: 'Robot Navigation in Dynamic Environments',
+        authors: 'Le Van Cuong, Vo Thanh Dat, Nguyen Thi Yen',
         abstract: { vi: 'Nghiên cứu thuật toán RL cho robot di chuyển trong môi trường có chướng ngại vật động, đạt tỉ lệ thành công 96.8%.', en: 'Research on RL algorithms for robot navigation with dynamic obstacles, achieving 96.8% success rate.' },
         venue: { vi: 'ICRA 2020', en: 'ICRA 2020' },
         doi: 'https://doi.org/10.1109/ICRA40945.2020.9196789',
       },
       {
-        name: { vi: 'Tối ưu năng lượng UAV bằng Deep RL', en: 'Energy-Efficient UAV Control with Deep RL' },
+        name: 'Energy-Efficient UAV Control with Deep RL',
+        authors: 'Le Van Cuong, Bui Minh Khoa, Phan Thi Ngoc Anh',
         abstract: { vi: 'Phát triển phương pháp điều khiển bay tiết kiệm năng lượng cho drone sử dụng PPO, giảm 35% tiêu thụ pin. Best Paper Award.', en: 'Developed energy-saving flight control method for drones using PPO, reducing battery consumption by 35%. Best Paper Award.' },
         venue: { vi: 'IROS 2019', en: 'IROS 2019' },
         doi: 'https://doi.org/10.1109/IROS40897.2019.8967654',
       },
       {
-        name: { vi: 'Cooperative Multi-Agent RL cho logistics', en: 'Cooperative Multi-Agent RL for Logistics' },
+        name: 'Cooperative Multi-Agent RL for Logistics',
+        authors: 'Le Van Cuong, Le Dinh Phuc, Hoang Gia Bao, Do Van Kien',
         abstract: { vi: 'Hệ thống phân phối hàng hóa đa robot trong kho, tăng 40% hiệu suất so với phương pháp truyền thống.', en: 'Multi-robot goods distribution system in warehouses, 40% efficiency improvement over traditional methods.' },
         venue: { vi: 'NeurIPS 2021', en: 'NeurIPS 2021' },
         doi: 'https://doi.org/10.48550/arXiv.2110.12345',
