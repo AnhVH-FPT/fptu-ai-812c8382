@@ -57,11 +57,8 @@ const Footer = ({ lang }: FooterProps) => {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-border/10 pt-6 flex items-center justify-between text-xs text-text-dim">
+        <div className="mt-10 border-t border-border/10 pt-6 text-center text-xs text-text-dim">
           <span>{t(f.copyright, lang)}</span>
-          <Link to="/admin/login" className="opacity-50 hover:opacity-100 hover:text-primary transition-all">
-            Admin Login
-          </Link>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { t, translations, type Lang } from '@/lib/i18n';
-import { facultyData } from '@/lib/faculty-data';
+import { facultyData, isRecruiting } from '@/lib/faculty-data';
 
 interface FacultyDetailPageProps {
   lang: Lang;
@@ -22,6 +22,13 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
     );
   }
 
+  const recruiting = isRecruiting(member);
+
+  const buildMailto = (topic: string) => {
+    const subject = encodeURIComponent(`[FPTU-AI] Ứng tuyển tham gia nghiên cứu đề tài ${topic}`);
+    return `mailto:${member.email}?subject=${subject}`;
+  };
+
   return (
     <section className="px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-4xl">
@@ -31,21 +38,24 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
 
         {/* Header */}
         <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-start">
-          <img
-            src={member.image}
-            alt={member.name}
-            className="h-40 w-40 rounded-2xl object-cover shadow-lg"
-          />
+          <img src={member.image} alt={member.name} className="h-40 w-40 rounded-2xl object-cover shadow-lg" />
           <div>
-            <h1 className="mb-1 text-3xl font-bold">{member.name}</h1>
+            <div className="mb-1 flex items-center gap-2">
+              <span
+                className={`inline-block h-3 w-3 rounded-full ${recruiting ? 'bg-green-500' : 'bg-gray-400'}`}
+                title={recruiting ? t(f.recruiting, lang) : t(f.notRecruiting, lang)}
+              />
+              <h1 className="text-3xl font-bold">{member.name}</h1>
+            </div>
+            <p className="mb-1 text-xs text-muted-foreground">
+              {recruiting ? `🟢 ${t(f.recruiting, lang)}` : `⚪ ${t(f.notRecruiting, lang)}`}
+            </p>
             <p className="mb-2 text-lg font-medium text-primary">{t(member.title, lang)}</p>
             <p className="mb-1 text-sm text-muted-foreground">📧 {member.email}</p>
             <p className="mb-3 text-sm text-muted-foreground">📞 {member.phone}</p>
             <div className="flex flex-wrap gap-1.5">
               {member.researchAreas[lang].map((area, i) => (
-                <span key={i} className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  {area}
-                </span>
+                <span key={i} className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{area}</span>
               ))}
             </div>
           </div>
@@ -56,13 +66,11 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
           <p className="leading-relaxed text-muted-foreground">{t(member.bio, lang)}</p>
         </div>
 
-        {/* Grid sections */}
+        {/* Courses + Education side by side */}
         <div className="grid gap-6 md:grid-cols-2">
           {/* Courses */}
           <div className="rounded-2xl border border-border bg-card p-6">
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
-              📚 {t(f.courses, lang)}
-            </h2>
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">📚 {t(f.courses, lang)}</h2>
             <ul className="space-y-2">
               {member.courses[lang].map((course, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -73,72 +81,89 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
             </ul>
           </div>
 
-          {/* Students */}
+          {/* Education History */}
           <div className="rounded-2xl border border-border bg-card p-6">
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
-              🎓 {t(f.students, lang)}
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="pb-2 pr-3 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {t(f.studentName, lang)}
-                    </th>
-                    <th className="pb-2 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {t(f.studentTopic, lang)}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {member.students.map((student, i) => (
-                    <tr key={i} className="border-b border-border/50 last:border-0">
-                      <td className="py-2.5 pr-3 font-medium">{t(student.name, lang)}</td>
-                      <td className="py-2.5 text-muted-foreground">{t(student.topic, lang)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">🎓 {t(f.education, lang)}</h2>
+            <div className="space-y-3">
+              {member.education.map((edu, i) => (
+                <div key={i} className="rounded-xl bg-muted p-3">
+                  <p className="font-semibold text-primary">{t(edu.degree, lang)}</p>
+                  <p className="text-sm text-foreground">{t(edu.school, lang)}</p>
+                  <p className="text-xs text-muted-foreground">{t(edu.major, lang)} · {edu.year}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Current Projects */}
+        {/* Current Researches (merged projects + students) */}
         <div className="mt-6 rounded-2xl border border-border bg-card p-6">
-          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
-            🔬 {t(f.projects, lang)}
-          </h2>
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">🔬 {t(f.currentResearches, lang)}</h2>
           <div className="space-y-4">
-            {member.projects[lang].map((project, i) => (
+            {member.currentResearches.map((r, i) => (
               <div key={i} className="rounded-xl bg-muted p-4">
-                <h3 className="mb-1 font-semibold text-primary">{project.name}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{project.desc}</p>
+                <h3 className="mb-1 font-semibold text-primary">{t(r.name, lang)}</h3>
+                <p className="mb-2 text-sm leading-relaxed text-muted-foreground">{t(r.summary, lang)}</p>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-xs font-semibold text-muted-foreground">{t(f.researchMembers, lang)}:</span>
+                  {r.members.map((m, j) => (
+                    <span key={j} className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                      {t(m.name, lang)}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Completed Research */}
+        {/* Completed Researches */}
         <div className="mt-6 rounded-2xl border border-border bg-card p-6">
-          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
-            📄 {t(f.completedResearch, lang)}
-          </h2>
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">📄 {t(f.completedResearches, lang)}</h2>
           <div className="space-y-4">
-            {member.completedResearch[lang].map((research, i) => (
+            {member.completedResearches.map((r, i) => (
               <div key={i} className="rounded-xl bg-muted p-4">
-                <h3 className="mb-1 font-semibold text-primary">{research.name}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{research.desc}</p>
+                <h3 className="mb-1 font-semibold text-primary">{t(r.name, lang)}</h3>
+                <p className="mb-2 text-sm leading-relaxed text-muted-foreground">{t(r.abstract, lang)}</p>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                  <span>📍 {t(r.venue, lang)}</span>
+                  <a href={r.doi} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
+                    🔗 DOI
+                  </a>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Announcement */}
+        {/* Notices & Application */}
         <div className="mt-6 rounded-2xl border-2 border-primary/30 bg-primary/5 p-6">
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold">
-            📢 {t(f.announcement, lang)}
-          </h2>
-          <p className="text-sm leading-relaxed">{t(member.announcement, lang)}</p>
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold">📢 {t(f.notices, lang)}</h2>
+          {member.notices.length === 0 ? (
+            <p className="text-sm text-muted-foreground italic">
+              {lang === 'vi' ? 'Hiện không có đề tài tuyển sinh.' : 'No open positions at the moment.'}
+            </p>
+          ) : (
+            <div className="space-y-4">
+              {member.notices.map((notice, i) => (
+                <div key={i} className="rounded-xl border border-primary/20 bg-card p-4">
+                  <h3 className="mb-1 font-semibold text-primary">{t(notice.topic, lang)}</h3>
+                  <p className="mb-1 text-sm text-muted-foreground">
+                    <span className="font-medium">{t(f.noticeSlots, lang)}:</span> {notice.slots}
+                  </p>
+                  <p className="mb-3 text-sm text-muted-foreground">
+                    <span className="font-medium">{t(f.noticeRequirements, lang)}:</span> {t(notice.requirements, lang)}
+                  </p>
+                  <a
+                    href={buildMailto(t(notice.topic, lang))}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+                  >
+                    ✉️ {t(f.applyBtn, lang)}
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

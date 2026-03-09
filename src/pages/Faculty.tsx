@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { t, translations, type Lang } from '@/lib/i18n';
-import { facultyData } from '@/lib/faculty-data';
+import { facultyData, isRecruiting } from '@/lib/faculty-data';
 
 interface FacultyPageProps {
   lang: Lang;
@@ -15,19 +15,28 @@ const FacultyCard = ({ member, lang }: { member: typeof facultyData[0]; lang: La
   const areas = member.researchAreas[lang];
   const needsTruncate = areas.length > VISIBLE_AREAS;
   const visibleAreas = expanded ? areas : areas.slice(0, VISIBLE_AREAS);
+  const recruiting = isRecruiting(member);
 
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300">
-      <div className="aspect-[4/3] overflow-hidden">
+      {/* Clickable image */}
+      <Link to={`/faculty/${member.id}`} className="aspect-[4/3] overflow-hidden block">
         <img
           src={member.image}
           alt={member.name}
           className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
           loading="lazy"
         />
-      </div>
+      </Link>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-1 text-xl font-bold">{member.name}</h3>
+        {/* Clickable name + status dot */}
+        <Link to={`/faculty/${member.id}`} className="group mb-1 flex items-center gap-2">
+          <span
+            className={`inline-block h-2.5 w-2.5 shrink-0 rounded-full ${recruiting ? 'bg-green-500' : 'bg-gray-400'}`}
+            title={recruiting ? t(f.recruiting, lang) : t(f.notRecruiting, lang)}
+          />
+          <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{member.name}</h3>
+        </Link>
         <p className="mb-3 text-sm text-primary font-medium">{t(member.title, lang)}</p>
         <p className="mb-1 text-xs text-muted-foreground">📧 {member.email}</p>
         <p className="mb-3 text-xs text-muted-foreground">📞 {member.phone}</p>
