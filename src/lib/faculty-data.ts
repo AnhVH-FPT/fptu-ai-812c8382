@@ -104,13 +104,15 @@ export const facultyData: Faculty[] = [
     ],
     completedResearches: [
       {
-        name: { vi: 'Phát hiện ung thư phổi bằng Deep Learning', en: 'Lung Cancer Detection with Deep Learning' },
+        name: 'Lung Cancer Detection with Deep Learning',
+        authors: 'Nguyen Van An, Tran Quoc Huy, Le Thi Minh Anh',
         abstract: { vi: 'Nghiên cứu ứng dụng mạng CNN trong phát hiện sớm ung thư phổi từ ảnh CT scan, đạt độ chính xác 94.2% trên bộ dữ liệu LIDC-IDRI.', en: 'Research on CNN application for early lung cancer detection from CT images, achieving 94.2% accuracy on the LIDC-IDRI dataset.' },
         venue: { vi: 'MICCAI 2022', en: 'MICCAI 2022' },
         doi: 'https://doi.org/10.1007/978-3-031-16431-6_01',
       },
       {
-        name: { vi: 'Tối ưu mô hình nhẹ cho thiết bị edge', en: 'Lightweight Model Optimization for Edge Devices' },
+        name: 'Lightweight Model Optimization for Edge Devices',
+        authors: 'Nguyen Van An, Pham Minh Duc, Hoang Thi Nga',
         abstract: { vi: 'Nghiên cứu kỹ thuật pruning và quantization để triển khai mô hình CV trên thiết bị IoT, giảm 60% kích thước mô hình mà chỉ giảm 1.5% accuracy.', en: 'Research on pruning and quantization techniques for deploying CV models on IoT devices, reducing model size by 60% with only 1.5% accuracy drop.' },
         venue: { vi: 'CVPR Workshop 2021', en: 'CVPR Workshop 2021' },
         doi: 'https://doi.org/10.1109/CVPRW53098.2021.00123',
