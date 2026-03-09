@@ -11,7 +11,8 @@ export interface CurrentResearch {
 }
 
 export interface CompletedResearch {
-  name: Record<Lang, string>;
+  name: string;
+  authors: string;
   abstract: Record<Lang, string>;
   venue: Record<Lang, string>;
   doi: string;

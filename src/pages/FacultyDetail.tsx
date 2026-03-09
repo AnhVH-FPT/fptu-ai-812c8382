@@ -123,8 +123,9 @@ const FacultyDetailPage = ({ lang }: FacultyDetailPageProps) => {
           <div className="space-y-4">
             {member.completedResearches.map((r, i) => (
               <div key={i} className="rounded-xl bg-muted p-4">
-                <h3 className="mb-1 font-semibold text-primary">{t(r.name, lang)}</h3>
-                <p className="mb-2 text-sm leading-relaxed text-muted-foreground">{t(r.abstract, lang)}</p>
+                <h3 className="mb-1 font-semibold text-primary">{r.name}</h3>
+                <p className="mb-1 text-sm italic text-muted-foreground">{r.authors}</p>
+                <p className="mb-2 text-sm leading-relaxed text-foreground">{t(r.abstract, lang)}</p>
                 <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                   <span>📍 {t(r.venue, lang)}</span>
                   <a href={r.doi} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
