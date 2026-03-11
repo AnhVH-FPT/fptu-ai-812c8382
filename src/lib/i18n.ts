@@ -85,6 +85,8 @@ export const translations = {
   faculty: {
     pageTitle: { vi: 'Đội ngũ Giảng viên', en: 'Our Faculty' },
     pageSubtitle: { vi: 'Những chuyên gia hàng đầu trong lĩnh vực Trí tuệ Nhân tạo', en: 'Leading experts in the field of Artificial Intelligence' },
+    searchPlaceholder: { vi: 'Tìm theo tên, hướng nghiên cứu, bài báo...', en: 'Search by name, research area, paper...' },
+    noResults: { vi: 'Không tìm thấy giảng viên phù hợp', en: 'No matching faculty found' },
     viewDetail: { vi: 'Xem chi tiết', en: 'View Details' },
     research: { vi: 'Hướng nghiên cứu', en: 'Research Areas' },
     currentResearches: { vi: 'Các Nghiên Cứu Đang Thực Hiện', en: 'Current Researches' },
